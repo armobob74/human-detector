@@ -6,8 +6,8 @@ Important: you'll have to make some blank folders after you download the repo. K
 Here's a summary of everything:
 
 folders user must create:
-	train_set <-- put images in here if you want to custom train the network 
-	test_set <-- put images in here to test during training 
+	train_set <-- put images in here if you want to custom train the network. Create one subdirectory for images with people and one for images without.
+	test_set <-- put images in here to test during training. Create one subdirectory for images with people and one for images without.
 	photos_to_classify <-- put photos in here if you want my already-trained network to classify them
         people_folder <-- if network sees a person in the photo, they will copy the photo here
 	no_people_folder <-- if network doesn't see a person, it will copy the photo here

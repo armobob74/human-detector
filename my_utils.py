@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 import os
+import torch.cuda
+
+if torch.cuda.is_available():
+    device = 'cuda'
+else:
+    device = 'cpu'
 
 def prepare_for_pyplot(img):
 	'''(Tensor) -> np array
@@ -46,8 +52,8 @@ def evaluate_epoch_loss(net,dataloader,criterion):
 	epoch_loss = 0
 	for i in range(len(dataloader)):
 		batch,target = next(bitter)
-		target = target.to('cuda')
-		output = net(batch.to('cuda'))
+		target = target.to(device)
+		output = net(batch.to(device))
 		loss = criterion(output,target/1) #divide by 1 so "target" is float and not int
 		epoch_loss += loss.item()
 	return epoch_loss / len(dataloader) #return normalized epoch_loss
@@ -70,7 +76,7 @@ def plot_tests(net,dataset,n,m):
 		for j in range(m):
 			k = k_list[iters]
 			img = dataset.__getitem__(k)[0] #select image (tuple) from dataset
-			pred_label = net(img.unsqueeze(0).to('cuda')) #need unsqueeze(0) to add dimension
+			pred_label = net(img.unsqueeze(0).to(device)) #need unsqueeze(0) to add dimension
 			real_label = dataset.__getitem__(k)[1]
 			abs_pred_label = round(float(pred_label))
 			if(abs_pred_label == 1):

@@ -1,7 +1,6 @@
 
 I started this project so I could have a classifier that would tell me whether or not an image has a person in it.
 I'm happy with the 95% test set accuracy I was able to achieve, but I've included my training infrastructure incase you want to try and do better.
-Important: you'll have to make some blank folders after you download the repo. Keep reading for more details.
 
 Here's a summary of everything:
 
